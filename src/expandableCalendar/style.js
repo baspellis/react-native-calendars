@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, I18nManager} from 'react-native';
 import * as defaultStyle from '../style';
 
 
@@ -51,8 +51,10 @@ export default function styleConstructor(theme = {}) {
       paddingTop: 24, // 8
       paddingBottom: 8,
       paddingLeft: 20,
+      paddingRight: 20,
       backgroundColor: appStyle.calendarBackground,
-      textAlign: 'left'
+      textAlign: 'left',
+      textTransform: 'uppercase'
     },
     header: {
       position: 'absolute',
@@ -92,8 +94,17 @@ export default function styleConstructor(theme = {}) {
       flexDirection: 'row',
       justifyContent: 'space-around'
     },
+    dayHeader: {
+      width: 32,
+      textAlign: 'center',
+      fontSize: appStyle.textDayHeaderFontSize,
+      fontFamily: appStyle.textDayHeaderFontFamily,
+      fontWeight: appStyle.textDayHeaderFontWeight,
+      color: appStyle.textSectionTitleColor
+    },
     arrowImage: {
-      tintColor: appStyle.arrowColor
+      tintColor: appStyle.arrowColor,
+      transform: I18nManager.isRTL ? [{scaleX: -1}] : undefined
     },
     todayButtonContainer: {
       alignItems: appStyle.todayButtonPosition === 'right' ? 'flex-end' : 'flex-start',
